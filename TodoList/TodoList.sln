@@ -3,15 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repositories - DAL", "Repositories - DAL", "{A10F12FE-CEC9-4E1C-A7E1-13D49878DC67}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Repositories - DAL", "03 - Repositories - DAL", "{A10F12FE-CEC9-4E1C-A7E1-13D49878DC67}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoList.Repositories", "TodoList.Repositories\TodoList.Repositories.csproj", "{B546FF1D-DAE8-4284-AF77-4FFB1C49F428}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business - BLL", "Business - BLL", "{22C82DBE-F671-449A-883F-CC947C1C1F76}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Business - BLL", "02 - Business - BLL", "{22C82DBE-F671-449A-883F-CC947C1C1F76}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoList.Business", "TodoList.Business\TodoList.Business.csproj", "{A2068E5E-21A4-4E44-8ECE-43333CF75A4A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoList.Models", "TodoList.Models\TodoList.Models.csproj", "{5F2BB823-3560-4BCC-83EF-EB581F1B4D1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Presentation - Web", "01 - Presentation - Web", "{0FAAECC1-2B75-46A0-8795-DBE076464244}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoList.WebApp", "TodoList.WebApp\TodoList.WebApp\TodoList.WebApp.csproj", "{7DC68D88-9082-4FF1-834D-CADA9A96F411}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoList.WebApp.Client", "TodoList.WebApp\TodoList.WebApp.Client\TodoList.WebApp.Client.csproj", "{48CCAF12-8D86-4FB2-992E-D9A4420356E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +37,14 @@ Global
 		{5F2BB823-3560-4BCC-83EF-EB581F1B4D1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F2BB823-3560-4BCC-83EF-EB581F1B4D1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F2BB823-3560-4BCC-83EF-EB581F1B4D1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DC68D88-9082-4FF1-834D-CADA9A96F411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DC68D88-9082-4FF1-834D-CADA9A96F411}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DC68D88-9082-4FF1-834D-CADA9A96F411}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DC68D88-9082-4FF1-834D-CADA9A96F411}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48CCAF12-8D86-4FB2-992E-D9A4420356E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48CCAF12-8D86-4FB2-992E-D9A4420356E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48CCAF12-8D86-4FB2-992E-D9A4420356E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48CCAF12-8D86-4FB2-992E-D9A4420356E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +53,8 @@ Global
 		{B546FF1D-DAE8-4284-AF77-4FFB1C49F428} = {A10F12FE-CEC9-4E1C-A7E1-13D49878DC67}
 		{A2068E5E-21A4-4E44-8ECE-43333CF75A4A} = {22C82DBE-F671-449A-883F-CC947C1C1F76}
 		{5F2BB823-3560-4BCC-83EF-EB581F1B4D1B} = {22C82DBE-F671-449A-883F-CC947C1C1F76}
+		{7DC68D88-9082-4FF1-834D-CADA9A96F411} = {0FAAECC1-2B75-46A0-8795-DBE076464244}
+		{48CCAF12-8D86-4FB2-992E-D9A4420356E4} = {0FAAECC1-2B75-46A0-8795-DBE076464244}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5DAD9517-FA59-4AB2-A301-A9E6FE71DE33}

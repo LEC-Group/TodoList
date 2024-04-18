@@ -14,7 +14,7 @@ public partial class Todo
         set; 
     } = string.Empty;
 
-    public ICollection<TodoItem> Items
+    public virtual ICollection<TodoItem> Items
     { 
         get;
         set;
