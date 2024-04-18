@@ -1,0 +1,13 @@
+﻿@page "/TodoItem/{TodoId:int}"
+
+<h3>TodoItem @TodoId</h3>
+
+@code {
+
+    [Parameter]
+    public int TodoId
+    {
+        get;
+        set;
+    }
+}
