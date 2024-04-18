@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repositories - DAL", "Repositories - DAL", "{A10F12FE-CEC9-4E1C-A7E1-13D49878DC67}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoList.Repositories", "TodoList.Repositories\TodoList.Repositories.csproj", "{B546FF1D-DAE8-4284-AF77-4FFB1C49F428}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B546FF1D-DAE8-4284-AF77-4FFB1C49F428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B546FF1D-DAE8-4284-AF77-4FFB1C49F428}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B546FF1D-DAE8-4284-AF77-4FFB1C49F428}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B546FF1D-DAE8-4284-AF77-4FFB1C49F428}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B546FF1D-DAE8-4284-AF77-4FFB1C49F428} = {A10F12FE-CEC9-4E1C-A7E1-13D49878DC67}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5DAD9517-FA59-4AB2-A301-A9E6FE71DE33}
+	EndGlobalSection
+EndGlobal

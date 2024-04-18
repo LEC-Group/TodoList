@@ -1,0 +1,7 @@
+﻿Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=TodoList;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir "Entities" -Force
+
+
+Add-Migration InitialCreate -Context TodoListContext
+Add-Migration -Context TodoListContext TodoList.Repositories.[NAME]
+Update-Database -Context TodoListContext
+Remove-Migration -Context TodoListContext
