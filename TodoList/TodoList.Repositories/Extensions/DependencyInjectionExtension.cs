@@ -7,7 +7,7 @@ namespace TodoList.Repositories;
 
 public static class DependencyInjectionExtension
 {
-    public static void AddQMSRepositoriesServices(this IServiceCollection services, IConfigurationRoot configuration, string connectionStringName = "DefaultConnection")
+    public static void AddTodoListRepositoriesServices(this IServiceCollection services, IConfigurationRoot configuration, string connectionStringName = "DefaultConnection")
     {
         var connectionString = configuration.GetConnectionString(connectionStringName);
 
