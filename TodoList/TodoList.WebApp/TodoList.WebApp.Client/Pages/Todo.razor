@@ -1,0 +1,41 @@
+﻿@page "/Todo"
+@rendermode InteractiveWebAssembly
+@inject HttpService HttpService
+
+<PageTitle>Todo List</PageTitle>
+
+<h1>Todo List</h1>
+
+@if (_Model == null)
+{
+    <div>Loading...</div>
+}
+else
+{
+    @foreach (var model in _Model)
+    {
+        <div>@model.Title</div>
+    }
+}
+
+@code {
+
+    #region Varaibles
+
+    private IEnumerable<TodoModel>? _Model = null;
+
+    #endregion
+
+    #region Methods
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _Model = await HttpService.HttpClient.GetFromJsonAsync<IEnumerable<TodoModel>>("/api/Todo/All") ?? [];
+            StateHasChanged();
+        }
+    }
+
+    #endregion
+}
