@@ -26,7 +26,7 @@ public partial class TodoItem
         set;
     }
 
-    public virtual Todo List
+    public virtual Todo Todo
     {
         get;
         set;
