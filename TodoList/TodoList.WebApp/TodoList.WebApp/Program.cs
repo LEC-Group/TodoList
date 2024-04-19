@@ -1,6 +1,5 @@
 using TodoList.WebApp.Components;
 using TodoList.Business;
-using TodoList.Repositories;
 using TodoList.WebApp.Client.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,10 +15,7 @@ builder.Services.AddHttpClient();
 builder.Services.AddScoped<HttpService, HttpService>();
 
 // Add Business Services
-builder.Services.AddTodoListBusinessServices(builder.Configuration);
-
-// Add Repositories Services
-builder.Services.AddTodoListRepositoriesServices(builder.Configuration, "DefaultConnection");
+builder.Services.AddTodoListBusinessServices(builder.Configuration, "DefaultConnection");
 
 
 // Add Controllers
