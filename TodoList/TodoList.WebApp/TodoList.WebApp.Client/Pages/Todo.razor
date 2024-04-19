@@ -25,7 +25,7 @@ else
         @foreach (var model in _Model)
         {
             <div class="list-group-item list-group-item-action d-flex p-0">
-                <a href="/TodoItem/@model.TodoId" class="flex-grow-1 p-2">@model.Title</a>
+                <a href="/TodoItem/@model.TodoId" class="flex-grow-1 p-2 text-decoration-none">@model.Title</a>
                 <button type="button" class="btn btn-link" @onclick="async () => await RemoveAsync(model)">delete</button>
             </div>
         }
@@ -34,7 +34,7 @@ else
 
 @code {
 
-    #region Varaibles
+    #region Variables
 
     private IEnumerable<TodoModel>? _Model = null;
 

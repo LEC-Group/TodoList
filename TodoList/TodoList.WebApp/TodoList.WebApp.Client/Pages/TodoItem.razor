@@ -1,8 +1,48 @@
 ﻿@page "/TodoItem/{TodoId:int}"
+@rendermode InteractiveWebAssembly
+@inject HttpService HttpService
 
-<h3>TodoItem @TodoId</h3>
+<PageTitle>Todo Items</PageTitle>
+
+<h1>Todo Items</h1>
+
+@if (_Model == null)
+{
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+}
+else
+{
+    <div>
+        <div class="input-group mb-3" style="max-width:300px;">
+            <input type="text" class="form-control" placeholder="Create Todo List" @bind-value="_NewTodoItemName">
+            <button class="btn btn-primary" type="button" @onclick="CreateAsync">Create</button>
+        </div>
+    </div>
+
+    <div class="my-2">
+        <a href="/Todo" class="small">« back</a>
+    </div>
+
+    <div class="list-group">
+        @foreach (var model in _Model)
+        {
+            <div class="list-group-item d-flex p-0">
+                <span class="flex-grow-1 p-2">@model.Title</span>
+                <button type="button" class="btn btn-link" @onclick="async () => await RemoveAsync(model)">delete</button>
+            </div>
+        }
+        @if (_Model.Count() == 0)
+        {
+            <div class="small text-muted">Empty...</div>
+        }
+    </div>
+}
 
 @code {
+
+    #region Parameters
 
     [Parameter]
     public int TodoId
@@ -10,4 +50,58 @@
         get;
         set;
     }
+
+    #endregion
+
+    #region Variables
+
+    private IEnumerable<TodoItemModel>? _Model = null;
+
+    private string _NewTodoItemName = string.Empty;
+
+    #endregion
+
+    #region Methods
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await LoadAllAsync();
+            StateHasChanged();
+        }
+    }
+
+    private async Task LoadAllAsync()
+    {
+        _Model = await HttpService.HttpClient.GetFromJsonAsync<IEnumerable<TodoItemModel>>($"/api/TodoItem/All?todoId={TodoId}") ?? [];
+    }
+
+    private async Task CreateAsync()
+    {
+        var model = new TodoItemCreateModel()
+        {
+            TodoId = TodoId,
+            Title = _NewTodoItemName,
+            Body = "",
+        };
+
+        var response = await HttpService.HttpClient.PostAsJsonAsync("/api/TodoItem/Create", model);
+        response.EnsureSuccessStatusCode();
+        _NewTodoItemName = string.Empty;
+
+        await LoadAllAsync();
+        StateHasChanged();
+    }
+
+    private async Task RemoveAsync(TodoItemModel todo)
+    {
+        var response = await HttpService.HttpClient.DeleteAsync($"/api/TodoItem/Remove?id={todo.TodoItemId}");
+        response.EnsureSuccessStatusCode();
+
+        await LoadAllAsync();
+        StateHasChanged();
+    }
+
+    #endregion
 }

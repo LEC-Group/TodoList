@@ -5,7 +5,13 @@ public partial class TodoItem
     public int TodoItemId 
     { 
         get; 
-        set; 
+        set;
+    }
+
+    public int TodoId
+    {
+        get;
+        set;
     }
 
     public string Title
