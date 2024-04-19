@@ -14,12 +14,20 @@
 }
 else
 {
+    <div>
+        <div class="input-group mb-3" style="max-width:300px;">
+            <input type="text" class="form-control" placeholder="Create Todo List" @bind-value="_NewTodoName">
+            <button class="btn btn-primary" type="button" @onclick="CreateAsync">Create</button>
+        </div>
+    </div>
+
     <div class="list-group">
         @foreach (var model in _Model)
         {
-            <a href="/TodoItem/@model.TodoId" class="list-group-item list-group-item-action" >
-                @model.Title
-            </a>
+            <div class="list-group-item list-group-item-action d-flex p-0">
+                <a href="/TodoItem/@model.TodoId" class="flex-grow-1 p-2">@model.Title</a>
+                <button type="button" class="btn btn-link" @onclick="async () => await RemoveAsync(model)">delete</button>
+            </div>
         }
     </div>
 }
@@ -30,6 +38,8 @@ else
 
     private IEnumerable<TodoModel>? _Model = null;
 
+    private string _NewTodoName = string.Empty;
+
     #endregion
 
     #region Methods
@@ -38,9 +48,38 @@ else
     {
         if (firstRender)
         {
-            _Model = await HttpService.HttpClient.GetFromJsonAsync<IEnumerable<TodoModel>>("/api/Todo/All") ?? [];
+            await LoadAllAsync();
             StateHasChanged();
         }
+    }
+
+    private async Task LoadAllAsync()
+    {
+        _Model = await HttpService.HttpClient.GetFromJsonAsync<IEnumerable<TodoModel>>("/api/Todo/All") ?? [];
+    }
+
+    private async Task CreateAsync()
+    {
+        var model = new TodoCreateModel()
+        {
+            Title = _NewTodoName,
+        };
+
+        var response = await HttpService.HttpClient.PostAsJsonAsync("/api/Todo/Create", model);
+        response.EnsureSuccessStatusCode();
+        _NewTodoName = string.Empty;
+
+        await LoadAllAsync();
+        StateHasChanged();
+    }
+
+    private async Task RemoveAsync(TodoModel todo)
+    {
+        var response = await HttpService.HttpClient.DeleteAsync($"/api/Todo/Remove?todoId={todo.TodoId}");
+        response.EnsureSuccessStatusCode();
+
+        await LoadAllAsync();
+        StateHasChanged();
     }
 
     #endregion

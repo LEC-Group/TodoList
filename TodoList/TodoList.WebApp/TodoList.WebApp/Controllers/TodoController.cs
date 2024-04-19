@@ -23,5 +23,19 @@ public class TodoController(ILogger<TodoController> logger, TodoService todoServ
         return Ok(models);
     }
 
+    [HttpPost("Create")]
+    public async Task<ActionResult> Create(TodoCreateModel model)
+    {
+        await _TodoService.CreateAsync(model);
+        return Ok();
+    }
+
+    [HttpDelete("Remove")]
+    public async Task<ActionResult> Remove(int todoId)
+    {
+        await _TodoService.RemoveAsync(todoId);
+        return Ok();
+    }
+
     #endregion
 }
